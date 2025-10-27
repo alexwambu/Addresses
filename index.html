@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GBT Token Deployer</title>
+  <style>
+    body { font-family: sans-serif; text-align:center; margin-top:50px; }
+    button { padding:10px 20px; background:#ffd700; border:none; border-radius:8px; cursor:pointer; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>GoldBarTether (GBT) Deployer</h1>
+  <button onclick="deploy()">Deploy Contract</button>
+  <p id="status"></p>
+  <h3>Deployed Contract Address:</h3>
+  <pre id="address"></pre>
+
+  <script>
+    async function loadAddress(){
+      const res = await fetch('/deployed');
+      const data = await res.json();
+      document.getElementById('address').textContent = data.contract_address || 'Not deployed yet';
+    }
+
+    async function deploy(){
+      document.getElementById('status').textContent = 'Deploying...';
+      const res = await fetch('/deploy');
+      const data = await res.json();
+      document.getElementById('status').textContent = 'Deployed successfully!';
+      document.getElementById('address').textContent = data.contract_address;
+    }
+
+    setInterval(loadAddress, 5000);
+    loadAddress();
+  </script>
+</body>
+</html>
