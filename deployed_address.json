@@ -1,0 +1,9 @@
+{
+  "contract_address": "",
+  "network": "GBTNetwork",
+  "rpc_url": "http://localhost:9636",
+  "chain_id": 9636,
+  "symbol": "GBT",
+  "gas_wallet": "0xF7F965b65E735Fb1C22266BdcE7A23CF5026Af1E",
+  "last_updated": ""
+}
